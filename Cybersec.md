@@ -1,14 +1,15 @@
-
+// oN va changer toutes les images, les formats ne sont pas bons, respecter la premiere occurance 
 
 
 ### Types d'attaques
 - Couche 1 : man-in-the-middle, splitter, rubberducky, gateway 
 
-- Couche 2 : man-in-the-middle -> modification de table ARP, spamming apr, détournement arp![[Pasted image 20260124103504.png]] 
+- Couche 2 : man-in-the-middle -> modification de table ARP, spamming apr, détournement arp  ![alt text](<res/Pasted image 20260124103504.png>)
 	- Couche 3 : Session : Déchiffrement, cookies volés 
 	- Couche 4: utilisateur -> plus d'attaques faisables, donc plus de protections disponibles
 ### Rappels : 
-![[Pasted image 20260131083349.png]]
+![alt text](<res/Pasted image 20260131083349.png>)
+
 
 ### L'anssi :
 Donne les normes et certifications pour trouver des bons partenaires et architectures sécurisées. 
@@ -32,7 +33,7 @@ Juste -i donnera les noms de machines propres
 
 TCP garantie la fiabilité contrairement a udp, grâce au numéro de sequence et acquittement
 
-![[Pasted image 20260131091824.png]](Fonctionnement TCP syn ack)
+![alt text](<res/Pasted image 20260131091824.png>)(Fonctionnement TCP syn ack)
 
 SACK (Selective acknolegement)
 
@@ -44,7 +45,7 @@ ack : dit qu'il a tout reçu jusqu'à 1401, SACK RE veut dire qu'il a reçu de 2
 
 
 Man expliqué de tcpdump : 
-![[Pasted image 20260131093751.png]]
+![alt text](<res/Pasted image 20260131093751.png>)
 
 Quelques exemples : 
 
@@ -62,15 +63,15 @@ Déroulement d'une connexion puis à un site internet :
 
 ###  **FTP** :
 Envoyer et recevoir/partager des fichiers en réseau
-![[Pasted image 20260131103148.png]]
-![[Pasted image 20260131103201.png]]
+![alt text](<res/Pasted image 20260131103148.png>)
+![alt text](<res/Pasted image 20260131103201.png>)
 
 **Mode passif** : client vient se connecter pour récuperer de la donnée
 Il calcule le port en faisant `a*256+b` 
 
 
 Récap visuel : 
-![[Pasted image 20260131103433.png]]
+![alt text](<res/Pasted image 20260131103433.png>)
 
 
 **Mode actif** : Vient se connecter des deux côtés
@@ -128,7 +129,7 @@ toTo = 5 (4lettres min + 1 lettre maj)
 - asymétrique : sha 
 
 
-![[Pasted image 20260207105109.png]]
+![alt text](<res/Pasted image 20260207105109.png>)
 
 #### Symétrique :
 Avantage du sym : 
@@ -143,11 +144,11 @@ Chiffrement par bloc :
 
 Toujours accompagnés d'un mode opératoire, ex: vont déterminer les intéractions entre les blocs
 ECB :  Ne jamais l'utiliser, pourri 
-![[Pasted image 20260207105552.png]]
+![alt text](<res/Pasted image 20260207105552.png>)
 -- 
 
 CBC, bien meilleur :
-![[Pasted image 20260207105946.png]]
+![alt text](<res/Pasted image 20260207105946.png>)
 
 #### Chiffrement asymétrique
 
@@ -158,7 +159,7 @@ Clé privée = signer
 Clé publique = chiffrer 
 
 étapes : 
-![[Pasted image 20260207110605.png]]
+![alt text](<res/Pasted image 20260207110605.png>)
 
 Avantages : 
 - Gestion des clés plus facile 
@@ -169,7 +170,7 @@ Inconvénients :
 
 #### Chiffrement hybride 
 
-![[Pasted image 20260207110944.png]]
+![alt text](<res/Pasted image 20260207110944.png>)
 Allie le meilleur des deux mondes. 
 
 On peut tout chiffrer : dossiers, partitions, fichiers, swap, connections
@@ -191,7 +192,7 @@ Gratuit open source; fichiers chiffrés de manière indépendante. à la différ
 
 **Petit rappel**
 
-![[Pasted image 20260214091947.png]]
+![alt text](<res/Pasted image 20260214091947.png>)
 
 ### Certificats 
 
@@ -207,11 +208,11 @@ Si on certifie la root, on certifie les child aussi.
 1) CSR
 - Génération d'une clé privée puis d'un CST (certificate signing request)
 voir photo:
-![[Pasted image 20260214095918.png]]
+![alt text](<res/Pasted image 20260214095918.png>)
 
 
 #### Comment le navigateur sait que le site est valide ?
-![[Pasted image 20260214095715.png]]
+![alt text](<res/Pasted image 20260214095715.png>)
 **Si les deux hashs sont égaux, le certificat est valide.**
 
 ## TLS/SSL
@@ -224,32 +225,32 @@ sert à établir des connexions sécurisées.
 
 Suite cryptographique:
 combinaison d'algo d'échages de clés, d'auth, de diffrement et de hash permettant d'établir la sécurité d'une connexion.
-![[Pasted image 20260214103612.png]]
+![alt text](<res/Pasted image 20260214103612.png>)
 
 ### Handshake tls 1.2
 
 étapes :
 - client hello , envoyé par le client, il annonce la liste des cohpers qu'il peut utiliser ainsi que diverts infos dont un nb aléatoire
 - voir photo
-![[Pasted image 20260214103645.png]]
+![alt text](<res/Pasted image 20260214103645.png>)
 
 Schéma : Cipher suite AES256-SHA256
-![[Pasted image 20260214104448.png]]
+![alt text](<res/Pasted image 20260214104448.png>)
 
 Récupérer la pms casse tout. C'est pour ça que cette sécu est cassée.
 Si la clé privée est dérobée, toutes les communications capturées précédemmment peuvent-être déchiffrées.
 
 PMS comme solution (perfect forward secrecy) remplace le role du chiffrement asy dans l'échange de la clé (avec diffie hellman, qui permet l'échange de clé où les deux se mettent en accord su un nb premier sans qu"un intermédiaire puisse le dévouvrir même en ayant capturé les échanges)
 
-![[Pasted image 20260214105042.png]]
+![alt text](<res/Pasted image 20260214105042.png>)
 
 ## définition :  hash chiffré avec la clé privée = signature
 
 **TLS avec Diffie-Hellman**
-![[Pasted image 20260214110904.png]]
+![alt text](<res/Pasted image 20260214110904.png>)
 
 Faille TLS HeartBleed (faille de heartbeat (garde une connection ouverte temporaire))
-![[Pasted image 20260214110723.png]]
+![alt text](<res/Pasted image 20260214110723.png>)
 
 Comment vérifier la solidité de sa configuration TLS ?
 
@@ -284,3 +285,98 @@ scp monfichier user@ip:chemin
 Downloader : 
 scp user@ip:chemin
 -C fait en sorte de compresser la donnée, donc augmente le débit et le nb de fichiers transférés
+
+
+### SSH 
+
+`ssh -R 9090:127.0.0.1:8000 -p 2222 etudiant@blabla.fr
+
+Local -L : Port d'entrée:ipdest:port-dest
+
+Reverse -R port entrréeDistant:ip-dest:port-dest
+- permet de faire suivres les conn qui arrivet sur le docket distante vers l'ip et port en sortie de tunnel ssh local
+
+par ex : ssh -R 6767:127.0.0.1:8000 -p 2222
+
+ssh va lancer un port sur le serveur du prof (6767) et rediriger ce port sur notre loopback au port 8000(par défaut port python)
+
+##### Tunnel dynamique (Anonyme bien mieux)
+ssh -D <port qu'on veut ouvrir> -p 2222 etudiant@rmdck.fr 
+aller dans le navigateur, param proxy et remplacer le proxy socks par 127.0.0.1
+
+##### ENCORE MIEUX - FoxyProxy
+
+passe direct par ssh mais sur internet et sans parametres.
+___
+
+## Pare-feu stateful
+
+permet d'accepter un paquet retour implicitement parce qu'un paquet aller explicite a été envoyé 
+![alt text](<res/Pasted image 20260221102827.png>)
+
+Mode IDS : intrusion detection system
+- Pas actif
+![alt text](<res/Pasted image 20260221103215.png>)
+Perlet de détecter des comportements malicieux sans apporter d'actions vis ) vis du flyx remonté.
+- agit comme une sonde, alerte l'admin, détecte.
+
+**Mode IPS** : intrusion prevention system
+- Actif
+![alt text](<res/Pasted image 20260221103239.png>)
+Permet de détecter des comportements malicieux et les bloquer activement
+
+Il existe des pare-feu non-dédiés: ceux qui font autre chose que le pare-feu (windows defender, iptables, eset, avast)
+
+Dédié : Stormshield, paloAlto, SonicWall, Fortinet
+Infra cool : 
+![alt text](<res/Pasted image 20260221103953.png>)
+Mélanger les marques, les technos
+
+Avantages d'un pare-feu :
+
+- Mettre tout le monde derrière des règles d'un pare-feu
+__ 
+
+Iptables travaille jusqu'à la couche 4
+Les vrais pare-feu peuvent gerer minimum jusqu'à couche 7 voir 8
+
+Par couche d'analyse
+![alt text](<res/Pasted image 20260221104408.png>)
+
+
+#### Netfliter (iptables)
+- firewall par défaut sur linux 
+Permet de : 
+- gérer le nat (l3 & >)
+- gérer le filtrage au niv réseau l3 et L4 grâce a un system de chaines et tables
+- gérer le filtrage au niveau de la trame L2
+(Voir schéma du bordel)
+
+IPTables : une des interfaces de management de netfilter permettant de créer drs regles de fiktatge dans les différentes chaines des tables netfilter
+
+- Les chaines et les tables : 
+Tables: 
+- filter
+- nat
+- mangle
+- raw
+- security
+Par défaut 
+- input 
+- output
+- forward
+- etc..
+	Commandes de base : 
+![alt text](<res/Pasted image 20260221104921.png>)
+
+Usages de filtrage :
+![alt text](<res/Pasted image 20260221105301.png>)
+
+![alt text](<res/Pasted image 20260221110057.png>)
+
+Commande réponse du tp : 
+
+iptables -A OUTPUT -p tcp --sport=22 -j ACCEPT
+
+TP2 ; 
+
